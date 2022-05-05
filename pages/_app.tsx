@@ -3,13 +3,15 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "../styles/globals.css";
+import "styles/tailwind.css";
 import type { AppProps } from "next/app";
 import { store, persistor } from "src/redux";
 import { theme } from "src/utils";
 
-type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout = NextPage & {
     layout?: (page: ReactElement) => ReactNode;
 };
 
