@@ -8,9 +8,10 @@ export const IndexDropdown = () => {
     const btnDropdownRef = createRef<HTMLAnchorElement>();
     const popoverDropdownRef = createRef<HTMLDivElement>();
     const openDropdownPopover = () => {
-        // createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-        //     placement: "bottom-start",
-        // });
+        //@ts-ignore
+        createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+            placement: "bottom-start",
+        });
         setDropdownPopoverShow(true);
     };
     const closeDropdownPopover = () => {
@@ -27,7 +28,7 @@ export const IndexDropdown = () => {
                     dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
                 }}
             >
-                Demo Pages
+                <i className="fa fa-solid fa-user"></i> &nbsp; User Name
             </a>
             <div
                 ref={popoverDropdownRef}
@@ -41,7 +42,7 @@ export const IndexDropdown = () => {
                         "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
                     }
                 >
-                    Admin Layout
+                    Admin
                 </span>
                 <Link href="/admin/dashboard">
                     <a
@@ -53,82 +54,7 @@ export const IndexDropdown = () => {
                         Dashboard
                     </a>
                 </Link>
-                <Link href="/admin/settings">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Settings
-                    </a>
-                </Link>
-                <Link href="/admin/tables">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Tables
-                    </a>
-                </Link>
-                <Link href="/admin/maps">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Maps
-                    </a>
-                </Link>
-                <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-                <span
-                    className={
-                        "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-                    }
-                >
-                    Auth Layout
-                </span>
-                <Link href="/auth/login">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Login
-                    </a>
-                </Link>
-                <Link href="/auth/register">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Register
-                    </a>
-                </Link>
-                <div className="h-0 mx-4 my-2 border border-solid border-blueGray-100" />
-                <span
-                    className={
-                        "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-                    }
-                >
-                    No Layout
-                </span>
-                <Link href="/landing">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Landing
-                    </a>
-                </Link>
+                <hr />
                 <Link href="/profile">
                     <a
                         href="#pablo"
@@ -136,7 +62,7 @@ export const IndexDropdown = () => {
                             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                         }
                     >
-                        Profile
+                        logout
                     </a>
                 </Link>
             </div>
