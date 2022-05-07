@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Header } from "src/components";
+import { Footer, Header } from "src/components";
 import { ILayout } from "src/interfaces";
 // import { selectApp, setLoading } from "src/redux";
 
@@ -23,6 +23,7 @@ export const LayoutApp = (props: ILayout) => {
         <>
             <Header />
             {props.children}
+            <Footer />
         </>
     );
 };

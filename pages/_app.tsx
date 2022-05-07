@@ -10,9 +10,11 @@ import "styles/tailwind.css";
 import type { AppProps } from "next/app";
 import { store, persistor } from "src/redux";
 import { theme } from "src/utils";
+import { LayoutApp } from "@layouts";
+import { ILayout } from "@interfaces";
 
 export type NextPageWithLayout = NextPage & {
-    layout?: (page: ReactElement) => ReactNode;
+    layout?: (props: ILayout) => JSX.Element;
 };
 
 type AppPropsWithLayout = AppProps & {
@@ -20,13 +22,15 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-    const getLayout = Component.layout ?? ((page) => page);
+    const Layout = Component.layout || LayoutApp;
 
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <PersistGate loading={null} persistor={persistor}>
-                    {getLayout(<Component {...pageProps} />)}
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
                 </PersistGate>
             </ThemeProvider>
         </Provider>

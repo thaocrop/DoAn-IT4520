@@ -36,27 +36,18 @@ export const Header = () => {
                     >
                         <ul className="flex flex-col lg:flex-row list-none mr-auto">
                             <li className="flex items-center">
-                                <a
-                                    className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                    href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index-navbar"
-                                >
-                                    Trang chủ
+                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                    <Link href="/">Trang chủ</Link>
                                 </a>
                             </li>
                             <li className="flex items-center">
-                                <a
-                                    className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                    href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index-navbar"
-                                >
-                                    Cẩm nang du lịch
+                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                    <Link href="/cam-nang-du-lich">Cẩm nang du lịch</Link>
                                 </a>
                             </li>
                             <li className="flex items-center">
-                                <a
-                                    className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                    href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/overview/notus?ref=nnjs-index-navbar"
-                                >
-                                    Bạn muốn đến?
+                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                    <Link href="/">Bạn muốn đến?</Link>
                                 </a>
                             </li>
                         </ul>
