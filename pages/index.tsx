@@ -84,7 +84,7 @@ const Home: NextPageWithLayout = () => {
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-400">
                                 <img
                                     alt="..."
-                                    src="/img/cam-nang-du-lich.jpeg"
+                                    src="/img/kinh-nghiem-a-z.jpeg"
                                     className="w-full align-middle rounded-t-lg"
                                 />
                                 <blockquote className="relative p-8 mb-4">

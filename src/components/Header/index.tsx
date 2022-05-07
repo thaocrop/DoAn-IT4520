@@ -57,13 +57,8 @@ export const Header = () => {
                             </li>
 
                             <li className="flex items-center">
-                                <a
-                                    className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                                    href="https://github.com/creativetimofficial/notus-nextjs?ref=nnjs-index-navbar"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    Đăng Ký
+                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                    <Link href="/dang-ky">Đăng Ký</Link>
                                 </a>
                             </li>
 
@@ -72,7 +67,9 @@ export const Header = () => {
                                     className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                                     type="button"
                                 >
-                                    Đăng Nhập
+                                    <a>
+                                        <Link href="/dang-nhap">Đăng Nhập</Link>
+                                    </a>
                                 </button>
                             </li>
                         </ul>

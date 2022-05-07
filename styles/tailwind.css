@@ -2477,6 +2477,10 @@ select {
   min-height: 100vh;
 }
 
+.min-h-screen-50 {
+  min-height: 50vh;
+}
+
 .min-h-screen-75 {
   min-height: 75vh;
 }
