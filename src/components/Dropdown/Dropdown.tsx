@@ -21,7 +21,7 @@ export const IndexDropdown = () => {
         <>
             <a
                 className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
+                href="javascript:void(0)"
                 ref={btnDropdownRef}
                 onClick={(e) => {
                     e.preventDefault();
@@ -42,7 +42,7 @@ export const IndexDropdown = () => {
                         "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
                     }
                 >
-                    Trang Quản Lý
+                    Admin
                 </span>
                 <Link href="/admin/dashboard">
                     <a
@@ -51,7 +51,7 @@ export const IndexDropdown = () => {
                             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                         }
                     >
-                        Bảng Thống Kê
+                        Dashboard
                     </a>
                 </Link>
                 <hr />

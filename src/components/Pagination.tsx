@@ -5,7 +5,7 @@ export const Pagination = () => {
                 <ul className="flex pl-0 rounded list-none flex-wrap">
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             <i className="fas fa-chevron-left -ml-px"></i>
@@ -14,7 +14,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             <i className="fas fa-chevron-left -ml-px"></i>
@@ -22,7 +22,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 text-white bg-blueGray-500"
                         >
                             1
@@ -30,7 +30,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             2
@@ -38,7 +38,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             3
@@ -46,7 +46,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             4
@@ -54,7 +54,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             5
@@ -62,7 +62,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             <i className="fas fa-chevron-right -mr-px"></i>
@@ -70,7 +70,7 @@ export const Pagination = () => {
                     </li>
                     <li>
                         <a
-                            href="#pablo"
+                            href="javascript:void(0)"
                             className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-blueGray-500 bg-white text-blueGray-500"
                         >
                             <i className="fas fa-chevron-right -mr-px"></i>
