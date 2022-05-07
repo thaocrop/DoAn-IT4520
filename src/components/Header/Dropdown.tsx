@@ -42,29 +42,26 @@ export const IndexDropdown = () => {
                         "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
                     }
                 >
-                    Admin
+                    Trang Quản Lý
                 </span>
                 <Link href="/admin/dashboard">
                     <a
-                        href="#pablo"
+                        href="javascript:void(0)"
                         className={
                             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
                         }
                     >
-                        Dashboard
+                        Bảng Thống Kê
                     </a>
                 </Link>
                 <hr />
-                <Link href="/profile">
-                    <a
-                        href="#pablo"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        logout
-                    </a>
-                </Link>
+                <div
+                    className={
+                        "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                    }
+                >
+                    Đăng Xuất
+                </div>
             </div>
         </>
     );

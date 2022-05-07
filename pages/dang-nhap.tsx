@@ -56,12 +56,19 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="flex flex-wrap mt-6 relative">
-                            <div className="w-1/2 ">
-                                <Link href="/dang-ky">
-                                    <a href="#pablo" className="text-blueGray-200">
-                                        <small>Tạo mới tài khoản</small>
-                                    </a>
-                                </Link>
+                            <div className="w-1/2">
+                                <a className="text-blueGray-200 cursor-pointer">
+                                    <Link href="/">
+                                        <small>Quay Lại Trang Chủ</small>
+                                    </Link>
+                                </a>
+                            </div>
+                            <div className="w-1/2 text-right">
+                                <a className="text-blueGray-200 cursor-pointer">
+                                    <Link href="/dang-ky">
+                                        <small>Tạo Tài Khoản Mới</small>
+                                    </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
