@@ -9,7 +9,7 @@ import reducer, { RootState } from "./slice";
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["theme","auth"],
+    whitelist: ["user", "auth"],
     blackList: ["app"],
 };
 

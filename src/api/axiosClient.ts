@@ -1,9 +1,11 @@
 import axios from "axios";
 const queryString = require("query-string");
-import { store } from "src/redux";
+
+import { API_URL } from "@configs";
+import { store } from "@redux";
 
 const axiosClient = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: API_URL,
 
     headers: {
         "Content-Type": "application/json",
@@ -19,16 +21,16 @@ axiosClient.interceptors.request.use((config) => {
     //   config.headers.Authorization = `Bearer ${token}`;
     //
     const token = store.getState().auth.auth?.accessToken;
-    config.headers["access-token"] = token;
+    config.headers["Authorization"] = `Bearer ${token}`;
 
     return config;
 });
 
 axiosClient.interceptors.response.use(
     (response) => {
-        if (response && response.data) {
-            return response;
-        }
+        // if (response && response.data) {
+        //     return response;
+        // }
         return response;
     },
 

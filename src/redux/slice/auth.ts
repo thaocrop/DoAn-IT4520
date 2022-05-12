@@ -1,86 +1,58 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IAuth, IInfo, ILogin } from "src/interfaces";
-import { authApi } from "src/api";
+import { IAuth, ILogin } from "@interfaces";
+import { authApi } from "@api";
 import { RootState } from ".";
+import { AppDispatch } from "../store";
+import { resetUser } from "./user";
 
 export const login = createAsyncThunk<IAuth, ILogin>(
-  "auth/login",
-  async (values: ILogin, { rejectWithValue }) => {
-    try {
-      const res = await authApi.login(values);
-      return res.data as IAuth;
-    } catch (err: any) {
-      return rejectWithValue(err.response.data);
+    "auth/login",
+    async (values: ILogin, { rejectWithValue }) => {
+        try {
+            const res = await authApi.login(values);
+            return res.data as IAuth;
+        } catch (err: any) {
+            return rejectWithValue(err.response.data);
+        }
     }
-  }
 );
-export const getInfo = createAsyncThunk("auth/userInfo", async () => {
-  const res = await authApi.getInfo();
-  return res.data as IInfo;
-});
+
 interface IState {
-  auth: IAuth | null;
-  isRemember: boolean;
-  isLoading: boolean;
-  error: string;
-  tokenInfoAuth: string;
-  userInfo: IInfo | null;
+    auth?: IAuth;
 }
 
 const initialState: IState = {
-  auth: null,
-  isRemember: false,
-  isLoading: false,
-  error: "",
-  tokenInfoAuth: "",
-  userInfo: null,
+    auth: undefined,
+};
+
+export const logout = () => (dispatch: AppDispatch) => {
+    dispatch(resetAuth());
+    dispatch(resetUser());
 };
 
 const authSlice = createSlice({
-  name: "auth",
-  initialState: initialState,
-  reducers: {
-    logout: () => {
-      return initialState;
+    name: "auth",
+    initialState: initialState,
+    reducers: {
+        resetAuth: () => {
+            return initialState;
+        },
+        setAuth: (state, action) => {
+            state.auth = action.payload;
+        },
     },
-    setAuth: (state, action) => {
-      state.auth = action.payload;
+    extraReducers: (builder) => {
+        builder.addCase(login.fulfilled, (state, action: { payload: IAuth }) => {
+            if (action.payload.accessToken) {
+                state.auth = action.payload;
+            }
+        });
     },
-    setInfo: (state, action) => {
-      state.userInfo = action.payload;
-    },
-    setRemember: (state, action: PayloadAction<boolean>) => {
-      state.isRemember = action.payload;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action: { payload: IAuth }) => {
-      if (action.payload.accessToken) {
-        state.auth = action.payload;
-      }
-      if (!state.isRemember) {
-        state.auth!.refreshToken = null;
-      }
-      state.isLoading = false;
-    });
-
-    builder.addCase(login.pending, (state) => {
-      state.isLoading = true;
-    });
-
-    builder.addCase(login.rejected, (state) => {
-      state.auth = null;
-      state.isLoading = false;
-    });
-    builder.addCase(getInfo.fulfilled, (state, action: { payload: IInfo }) => {
-      state.userInfo = action.payload;
-    });
-  },
 });
 
 export const selectAuth = (state: RootState) => state.auth;
 
-export const { logout, setAuth, setInfo, setRemember } = authSlice.actions;
+export const { resetAuth, setAuth } = authSlice.actions;
 
 export default authSlice.reducer;

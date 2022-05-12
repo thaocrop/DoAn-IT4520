@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import Link from "next/link";
-// components
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import { IndexDropdown } from "../Dropdown";
+import { selectAuth } from "@redux";
 
-export const Header = () => {
+const CHeader = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const { auth } = useSelector(selectAuth);
+    const { pathname } = useRouter();
+
     return (
         <>
             <nav className="top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-white shadow">
@@ -36,42 +41,62 @@ export const Header = () => {
                     >
                         <ul className="flex flex-col lg:flex-row list-none mr-auto">
                             <li className="flex items-center">
-                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                <a
+                                    className={`hover:text-emerald-600 ${
+                                        pathname === "/" ? "text-emerald-500" : "text-blueGray-700"
+                                    } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
+                                >
                                     <Link href="/">Trang chủ</Link>
                                 </a>
                             </li>
                             <li className="flex items-center">
-                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                <a
+                                    className={`hover:text-emerald-600 ${
+                                        pathname === "/cam-nang-du-lich"
+                                            ? "text-emerald-500"
+                                            : "text-blueGray-700"
+                                    } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
+                                >
                                     <Link href="/cam-nang-du-lich">Cẩm nang du lịch</Link>
                                 </a>
                             </li>
                             <li className="flex items-center">
-                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                <a
+                                    className={`hover:text-emerald-600 ${
+                                        pathname === "/noi-ban-muon-den"
+                                            ? "text-emerald-500"
+                                            : "text-blueGray-700"
+                                    } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
+                                >
                                     <Link href="/">Bạn muốn đến?</Link>
                                 </a>
                             </li>
                         </ul>
                         <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-                            <li className="flex items-center">
-                                <IndexDropdown />
-                            </li>
+                            {auth ? (
+                                <li className="flex items-center">
+                                    <IndexDropdown />
+                                </li>
+                            ) : (
+                                <>
+                                    <li className="flex items-center">
+                                        <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                            <Link href="/dang-ky">Đăng Ký</Link>
+                                        </a>
+                                    </li>
 
-                            <li className="flex items-center">
-                                <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
-                                    <Link href="/dang-ky">Đăng Ký</Link>
-                                </a>
-                            </li>
-
-                            <li className="flex items-center">
-                                <button
-                                    className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
-                                    type="button"
-                                >
-                                    <a>
-                                        <Link href="/dang-nhap">Đăng Nhập</Link>
-                                    </a>
-                                </button>
-                            </li>
+                                    <li className="flex items-center">
+                                        <button
+                                            className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            type="button"
+                                        >
+                                            <a>
+                                                <Link href="/dang-nhap">Đăng Nhập</Link>
+                                            </a>
+                                        </button>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>
@@ -79,3 +104,5 @@ export const Header = () => {
         </>
     );
 };
+
+export const Header = memo(CHeader);

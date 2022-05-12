@@ -170,64 +170,8 @@ const Home: NextPageWithLayout = () => {
                 </div>
 
                 <div className="container mx-auto overflow-hidden pb-20">
-                    <div className="flex flex-wrap items-center">
-                        <div className="w-full md:w-6/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-                            <div className="flex flex-wrap">
-                                <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Phố cổ Hà Nội - địa điểm vui chơi Hà Nội về đêm
-                                            </h6>
-                                            <p className="mb-4 text-blueGray-500">
-                                                Khu phố cổ là địa điểm chơi ở Hà Nội cuối tuần quen
-                                                thuộc của mọi cư dân và du khách....
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Cầu kính Bạch Long Mộc Châu
-                                            </h6>
-                                            <p className="mb-4 text-blueGray-500">
-                                                Thêm tọa độ check in cho team thích những thử thách
-                                                mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
-                                                thiên nhiên hùng vĩ...
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col min-w-0 mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Hồ Hoàn Kiếm - Địa điểm vui chơi Hà Nội thú vị
-                                            </h6>
-                                            <p className="mb-4 text-blueGray-500">
-                                                Trong số các địa điểm vui chơi ở Hà Nội, không thể
-                                                không kể đến Hồ Hoàn Kiếm (Hồ Gươm). Hồ Hoàn Kiếm
-                                                gắn với truyền thuyết rùa vàng trả gươm cho vua Lê
-                                                vào thế kỉ XV.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Singapore 2022 siêu vui
-                                            </h6>
-                                            <p className="mb-4 text-blueGray-500">
-                                                Bạn đã dự trù chi phí cho chuyến du lịch Singapore
-                                                2022 tự túc của mình khoảng 20 triệu....
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto mt-32">
+                    <div className="flex flex-wrap items-center pt-32">
+                        <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto ">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-lightBlue-400">
                                 <img
                                     alt="..."
@@ -253,6 +197,62 @@ const Home: NextPageWithLayout = () => {
                                         vị.
                                     </p>
                                 </blockquote>
+                            </div>
+                        </div>
+
+                        <div className="w-full md:w-6/12 px-4">
+                            <div className="flex flex-wrap">
+                                <div className="w-full md:w-6/12 px-4">
+                                    <div className="relative flex flex-col mt-4">
+                                        <div className="px-4 py-5 flex-auto">
+                                            <h6 className="text-xl mb-1 font-semibold">
+                                                Du lịch Malaysia bạn không nên bỏ lỡ
+                                            </h6>
+                                            <p className="mb-4 text-blueGray-500">
+                                                Với những tín đồ yêu thích sự xê dịch, Singapore,
+                                                Malaysia chính là vùng đất hứa đáng để đặt chân đến
+                                                một lần....
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="relative flex flex-col min-w-0">
+                                        <div className="px-4 py-5 flex-auto">
+                                            <h6 className="text-xl mb-1 font-semibold">
+                                                Du lịch mùa hè Nhật Bản
+                                            </h6>
+                                            <p className="mb-4 text-blueGray-500">
+                                                Nhật Bản được thế giới biết đến với những bộ kimono
+                                                xinh đẹp, duyên dáng hay cách cúi chào gập người và
+                                                nền ẩm thực đầy phong phú....
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full md:w-6/12 px-4">
+                                    <div className="relative flex flex-col min-w-0 mt-4">
+                                        <div className="px-4 py-5 flex-auto">
+                                            <h6 className="text-xl mb-1 font-semibold">
+                                                Cầu kính Bạch Long Mộc Châu
+                                            </h6>
+                                            <p className="mb-4 text-blueGray-500">
+                                                Thêm tọa độ check in cho team thích những thử thách
+                                                mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
+                                                thiên nhiên hùng vĩ...
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="relative flex flex-col min-w-0">
+                                        <div className="px-4 py-5 flex-auto">
+                                            <h6 className="text-xl mb-1 font-semibold">
+                                                Du lịch Singapore 2022 siêu vui
+                                            </h6>
+                                            <p className="mb-4 text-blueGray-500">
+                                                Bạn đã dự trù chi phí cho chuyến du lịch Singapore
+                                                2022 tự túc của mình khoảng 20 triệu....
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

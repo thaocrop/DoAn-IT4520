@@ -1,23 +1,24 @@
 // import { Layout, Spin } from "antd";
 import { useEffect } from "react";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Footer, Header } from "src/components";
-import { ILayout } from "src/interfaces";
+import { Footer, Header } from "@components";
+import { ILayout } from "@interfaces";
+import { getUser, selectAuth } from "@redux";
 // import { selectApp, setLoading } from "src/redux";
 
 export const LayoutApp = (props: ILayout) => {
     //redux state
     const dispatch = useDispatch();
+    const { auth } = useSelector(selectAuth);
 
     // const loading = useSelector(selectApp).loading;
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         dispatch(setLoading(false));
-    //     }, 1000);
-    // }, []);
+    useEffect(() => {
+        if (auth) {
+            dispatch(getUser());
+        }
+    }, [dispatch, auth]);
 
     return (
         <>

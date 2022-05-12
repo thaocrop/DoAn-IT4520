@@ -1,12 +1,23 @@
-import { createRef, useState } from "react";
+import { createRef, useCallback, useState } from "react";
 import Link from "next/link";
 import { createPopper } from "@popperjs/core";
+import { useDispatch, useSelector } from "react-redux";
+
+import { logout, selectAuth, selectUser } from "@redux";
+import { UserType } from "@configs";
 
 export const IndexDropdown = () => {
+    const { profile } = useSelector(selectUser);
     // dropdown props
     const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
     const btnDropdownRef = createRef<HTMLAnchorElement>();
     const popoverDropdownRef = createRef<HTMLDivElement>();
+    const dispatch = useDispatch();
+
+    const handleLogout = useCallback(() => {
+        dispatch(logout());
+    }, [dispatch]);
+
     const openDropdownPopover = () => {
         //@ts-ignore
         createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
@@ -17,54 +28,63 @@ export const IndexDropdown = () => {
     const closeDropdownPopover = () => {
         setDropdownPopoverShow(false);
     };
-    return (
-        <>
-            <a
-                className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="javascript:void(0)"
-                ref={btnDropdownRef}
-                onClick={(e) => {
-                    e.preventDefault();
-                    dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
-                }}
-            >
-                <i className="fa fa-solid fa-user"></i> &nbsp; User Name
-            </a>
-            <div
-                ref={popoverDropdownRef}
-                className={
-                    (dropdownPopoverShow ? "block " : "hidden ") +
-                    "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-                }
-            >
-                <span
-                    className={
-                        "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
-                    }
+    if (profile) {
+        return (
+            <>
+                <a
+                    className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    href="javascript:void(0)"
+                    ref={btnDropdownRef}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
+                    }}
                 >
-                    Admin
-                </span>
-                <Link href="/admin/dashboard">
-                    <a
-                        href="javascript:void(0)"
-                        className={
-                            "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
-                        }
-                    >
-                        Dashboard
-                    </a>
-                </Link>
-                <hr />
+                    <i className="fa fa-solid fa-user"></i> &nbsp; {profile.user_name}
+                </a>
                 <div
+                    ref={popoverDropdownRef}
                     className={
-                        "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        (dropdownPopoverShow ? "block " : "hidden ") +
+                        "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
                     }
                 >
-                    Đăng Xuất
+                    {profile.user_type === UserType.Admin && (
+                        <>
+                            <span
+                                className={
+                                    "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
+                                }
+                            >
+                                Admin
+                            </span>
+                            <Link href="/admin/dashboard">
+                                <a
+                                    href="javascript:void(0)"
+                                    className={
+                                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                                    }
+                                >
+                                    Dashboard
+                                </a>
+                            </Link>
+                            <hr />
+                        </>
+                    )}
+                    <div
+                        className={
+                            "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        }
+                        onClick={handleLogout}
+                    >
+                        Đăng Xuất
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    } else {
+        return <></>;
+    }
 };
 
 export default IndexDropdown;

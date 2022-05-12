@@ -5,6 +5,7 @@ import { AnyAction, Reducer } from "@reduxjs/toolkit";
 
 // import appReducer from "./auth";
 import authReducer from "./auth";
+import userReducer from "./user";
 // const persistConfig = {
 //     key: "root",
 //     storage,
@@ -12,9 +13,11 @@ import authReducer from "./auth";
 
 // const authPersistedReducer = persistReducer(persistConfig, appReducer);
 export * from "./auth";
+export * from "./user";
 
 const productReducer = combineReducers({
     auth: authReducer,
+    user: userReducer,
 });
 
 export type RootState = ReturnType<typeof productReducer>;

@@ -1,9 +1,20 @@
 // import { StyledContentAuth, StyledAuth } from "src/components";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import Router from "next/router";
 
-import { Header } from "@components";
 import { ILayout } from "@interfaces";
+import { selectAuth } from "@redux";
 
 export const LayoutAuth = (props: ILayout) => {
+    const { auth } = useSelector(selectAuth);
+
+    useEffect(() => {
+        if (auth) {
+            Router.push("/");
+        }
+    }, [auth]);
+
     return (
         <main>
             <section className="relative w-full h-full py-40 min-h-screen">
@@ -16,13 +27,5 @@ export const LayoutAuth = (props: ILayout) => {
                 {props.children}
             </section>
         </main>
-
-        // <StyledAuth notImage={notImageAuth}>
-        //     <StyledContentAuth notImage={notImageAuthContent}>
-        //         <img alt="" className="bg-image__logo" src="/images/auth/logo.png" />
-
-        //         {props.children}
-        //     </StyledContentAuth>
-        // </StyledAuth>
     );
 };
