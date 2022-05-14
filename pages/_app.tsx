@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "styles/tailwind.css";
 import "styles/index.css";
+import "draft-js/dist/Draft.css";
 import type { AppProps } from "next/app";
 import { store, persistor } from "src/redux";
 import { theme } from "src/utils";

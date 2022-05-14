@@ -32,7 +32,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/components/common/Editor.tsx"
+    "src/components/common/Editor.js"
   ],
   "exclude": ["node_modules"]
 }
