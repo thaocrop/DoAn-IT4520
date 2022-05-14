@@ -27,10 +27,10 @@ const Home: NextPageWithLayout = () => {
                             <h1 className="font-semibold text-6xl text-teal-500">
                                 Du lịch Việt Nam
                             </h1>
-                            <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
+                            <p className="mt-4 text-lg leading-relaxed text-slate-500">
                                 Đất nước ta trải qua hàng nghìn năm dựng nước, giữ nước.
                             </p>
-                            <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
+                            <p className="mt-4 text-lg leading-relaxed text-slate-500">
                                 Con người chân thành, mộc mạc chất phát. Những tháng ngày thống khổ
                                 của cha ông đã viết lên những trang sử hào hùng. Vẻ đẹp từ tâm hồn,
                                 từ con người ấy càng đẹp hơn khi chúng ta được tạo hóa ban tặng
@@ -42,10 +42,10 @@ const Home: NextPageWithLayout = () => {
                                 tuyệt đẹp, của chính mình.
                             </p>
                             <div className="mt-12">
-                                <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-400 active:bg-blueGray-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+                                <a className="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-400 active:bg-slate-500 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
                                     <Link href="/cam-nang-du-lich">Cẩm Nang Du Lịch</Link>
                                 </a>
-                                <a className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg">
+                                <a className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 active:bg-slate-600 uppercase text-sm shadow hover:shadow-lg">
                                     <Link href="/">Nơi bạn muốn đến</Link>
                                 </a>
                             </div>
@@ -58,7 +58,7 @@ const Home: NextPageWithLayout = () => {
                     alt="..."
                 />
             </section>
-            <section className="mt-48 md:mt-40 pb-40 relative bg-blueGray-100">
+            <section className="mt-48 md:mt-40 pb-40 relative bg-slate-100">
                 <div
                     className="-mt-20 top-0 bottom-auto left-0 right-0 w-full absolute h-20"
                     style={{ transform: "translateZ(0)" }}
@@ -73,7 +73,7 @@ const Home: NextPageWithLayout = () => {
                         y="0"
                     >
                         <polygon
-                            className="text-blueGray-100 fill-current"
+                            className="text-slate-100 fill-current"
                             points="2560 0 2560 100 0 100"
                         ></polygon>
                     </svg>
@@ -119,7 +119,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Malaysia bạn không nên bỏ lỡ
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Với những tín đồ yêu thích sự xê dịch, Singapore,
                                                 Malaysia chính là vùng đất hứa đáng để đặt chân đến
                                                 một lần....
@@ -131,7 +131,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch mùa hè Nhật Bản
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Nhật Bản được thế giới biết đến với những bộ kimono
                                                 xinh đẹp, duyên dáng hay cách cúi chào gập người và
                                                 nền ẩm thực đầy phong phú....
@@ -145,7 +145,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Cầu kính Bạch Long Mộc Châu
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Thêm tọa độ check in cho team thích những thử thách
                                                 mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
                                                 thiên nhiên hùng vĩ...
@@ -157,7 +157,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Singapore 2022 siêu vui
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Bạn đã dự trù chi phí cho chuyến du lịch Singapore
                                                 2022 tự túc của mình khoảng 20 triệu....
                                             </p>
@@ -172,7 +172,7 @@ const Home: NextPageWithLayout = () => {
                 <div className="container mx-auto overflow-hidden pb-20">
                     <div className="flex flex-wrap items-center pt-32">
                         <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto ">
-                            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-lightBlue-400">
+                            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-sky-400">
                                 <img
                                     alt="..."
                                     src="/img/an-va-choi.jpeg"
@@ -187,7 +187,7 @@ const Home: NextPageWithLayout = () => {
                                     >
                                         <polygon
                                             points="-30,95 583,95 583,65"
-                                            className="text-lightBlue-400 fill-current"
+                                            className="text-sky-400 fill-current"
                                         ></polygon>
                                     </svg>
                                     <h4 className="text-xl font-bold text-white">ĂN & CHƠI</h4>
@@ -208,7 +208,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Malaysia bạn không nên bỏ lỡ
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Với những tín đồ yêu thích sự xê dịch, Singapore,
                                                 Malaysia chính là vùng đất hứa đáng để đặt chân đến
                                                 một lần....
@@ -220,7 +220,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch mùa hè Nhật Bản
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Nhật Bản được thế giới biết đến với những bộ kimono
                                                 xinh đẹp, duyên dáng hay cách cúi chào gập người và
                                                 nền ẩm thực đầy phong phú....
@@ -234,7 +234,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Cầu kính Bạch Long Mộc Châu
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Thêm tọa độ check in cho team thích những thử thách
                                                 mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
                                                 thiên nhiên hùng vĩ...
@@ -246,7 +246,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Singapore 2022 siêu vui
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Bạn đã dự trù chi phí cho chuyến du lịch Singapore
                                                 2022 tự túc của mình khoảng 20 triệu....
                                             </p>
@@ -296,7 +296,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Malaysia bạn không nên bỏ lỡ
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Với những tín đồ yêu thích sự xê dịch, Singapore,
                                                 Malaysia chính là vùng đất hứa đáng để đặt chân đến
                                                 một lần....
@@ -308,7 +308,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch mùa hè Nhật Bản
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Nhật Bản được thế giới biết đến với những bộ kimono
                                                 xinh đẹp, duyên dáng hay cách cúi chào gập người và
                                                 nền ẩm thực đầy phong phú....
@@ -322,7 +322,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Cầu kính Bạch Long Mộc Châu
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Thêm tọa độ check in cho team thích những thử thách
                                                 mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
                                                 thiên nhiên hùng vĩ...
@@ -334,7 +334,7 @@ const Home: NextPageWithLayout = () => {
                                             <h6 className="text-xl mb-1 font-semibold">
                                                 Du lịch Singapore 2022 siêu vui
                                             </h6>
-                                            <p className="mb-4 text-blueGray-500">
+                                            <p className="mb-4 text-slate-500">
                                                 Bạn đã dự trù chi phí cho chuyến du lịch Singapore
                                                 2022 tự túc của mình khoảng 20 triệu....
                                             </p>

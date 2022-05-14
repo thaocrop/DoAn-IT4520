@@ -4,3 +4,4 @@ export * from "./Footer";
 export * from "./Pagination";
 export * from "./PostItem";
 export * from "./SideBar";
+export * from "./common";

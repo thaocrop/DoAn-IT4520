@@ -6,6 +6,7 @@ import * as yup from "yup";
 
 import { ILogin } from "@interfaces";
 import { login, getUser } from "@redux";
+import { MCInput } from "@components";
 
 interface Props {}
 
@@ -50,46 +51,29 @@ const Login = (props: Props) => {
     return (
         <form>
             <div className="relative w-full mb-3">
-                <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                >
-                    tên đăng nhập
-                </label>
-                <input
-                    name="user_name"
+                <MCInput
+                    title={"Tên đăng nhập"}
                     value={values.user_name}
+                    error={errors.user_name}
                     onChange={handleChange}
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Tên Đăng Nhập"
+                    name="user_name"
                 />
-                {errors.user_name && (
-                    <span className="text-red-500 text-xs">{errors.user_name}</span>
-                )}
             </div>
 
             <div className="relative w-full mb-3">
-                <label
-                    className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    htmlFor="grid-password"
-                >
-                    Mật khẩu
-                </label>
-                <input
-                    type="password"
-                    name="password"
+                <MCInput
+                    title={"Mật khẩu"}
                     value={values.password}
+                    error={errors.password}
+                    name="password"
+                    input_type="password"
                     onChange={handleChange}
-                    className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Mật Khẩu"
                 />
-
-                {errors.password && <span className="text-red-500 text-xs">{errors.password}</span>}
             </div>
 
             <div className="text-center mt-6">
                 <button
-                    className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                    className="bg-slate-800 text-white active:bg-slate-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                     type="button"
                     onClick={memoSubmit}
                 >

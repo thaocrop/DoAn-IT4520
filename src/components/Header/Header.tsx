@@ -43,7 +43,7 @@ const CHeader = () => {
                             <li className="flex items-center">
                                 <a
                                     className={`hover:text-emerald-600 ${
-                                        pathname === "/" ? "text-emerald-500" : "text-blueGray-700"
+                                        pathname === "/" ? "text-emerald-500" : "text-slate-700"
                                     } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
                                 >
                                     <Link href="/">Trang chủ</Link>
@@ -54,7 +54,7 @@ const CHeader = () => {
                                     className={`hover:text-emerald-600 ${
                                         pathname === "/cam-nang-du-lich"
                                             ? "text-emerald-500"
-                                            : "text-blueGray-700"
+                                            : "text-slate-700"
                                     } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
                                 >
                                     <Link href="/cam-nang-du-lich">Cẩm nang du lịch</Link>
@@ -65,7 +65,7 @@ const CHeader = () => {
                                     className={`hover:text-emerald-600 ${
                                         pathname === "/noi-ban-muon-den"
                                             ? "text-emerald-500"
-                                            : "text-blueGray-700"
+                                            : "text-slate-700"
                                     } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
                                 >
                                     <Link href="/">Bạn muốn đến?</Link>
@@ -80,14 +80,14 @@ const CHeader = () => {
                             ) : (
                                 <>
                                     <li className="flex items-center">
-                                        <a className="hover:text-emerald-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
+                                        <a className="hover:text-emerald-500 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold">
                                             <Link href="/dang-ky">Đăng Ký</Link>
                                         </a>
                                     </li>
 
                                     <li className="flex items-center">
                                         <button
-                                            className="bg-blueGray-700 text-white active:bg-blueGray-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+                                            className="bg-slate-700 text-white active:bg-slate-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
                                             type="button"
                                         >
                                             <a>

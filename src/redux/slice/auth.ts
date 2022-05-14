@@ -1,9 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IRegister } from "./../../interfaces/auth";
+import { createAsyncThunk, createSlice, PayloadAction, Dispatch } from "@reduxjs/toolkit";
 
 import { IAuth, ILogin } from "@interfaces";
 import { authApi } from "@api";
 import { RootState } from ".";
-import { AppDispatch } from "../store";
 import { resetUser } from "./user";
 
 export const login = createAsyncThunk<IAuth, ILogin>(
@@ -11,6 +11,21 @@ export const login = createAsyncThunk<IAuth, ILogin>(
     async (values: ILogin, { rejectWithValue }) => {
         try {
             const res = await authApi.login(values);
+            return res.data as IAuth;
+        } catch (err: any) {
+            return rejectWithValue(err.response.data);
+        }
+    }
+);
+
+export const register = createAsyncThunk<IAuth, IRegister>(
+    "auth/login",
+    async (values: IRegister, { rejectWithValue }) => {
+        try {
+            const res = await authApi.register({
+                user_name: values.user_name,
+                password: values.password,
+            });
             return res.data as IAuth;
         } catch (err: any) {
             return rejectWithValue(err.response.data);
@@ -26,7 +41,7 @@ const initialState: IState = {
     auth: undefined,
 };
 
-export const logout = () => (dispatch: AppDispatch) => {
+export const logout = () => (dispatch: Dispatch<any>) => {
     dispatch(resetAuth());
     dispatch(resetUser());
 };

@@ -32,7 +32,7 @@ export const IndexDropdown = () => {
         return (
             <>
                 <a
-                    className="hover:text-blueGray-500 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                    className="hover:text-slate-500 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     href="javascript:void(0)"
                     ref={btnDropdownRef}
                     onClick={(e) => {
@@ -53,7 +53,7 @@ export const IndexDropdown = () => {
                         <>
                             <span
                                 className={
-                                    "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-blueGray-400"
+                                    "text-sm pt-2 pb-0 px-4 font-bold block w-full whitespace-nowrap bg-transparent text-slate-400"
                                 }
                             >
                                 Admin
@@ -62,7 +62,7 @@ export const IndexDropdown = () => {
                                 <a
                                     href="javascript:void(0)"
                                     className={
-                                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                                     }
                                 >
                                     Dashboard
@@ -71,9 +71,19 @@ export const IndexDropdown = () => {
                             <hr />
                         </>
                     )}
+                    <Link href="/posts/tao-moi">
+                        <a
+                            href="javascript:void(0)"
+                            className={
+                                "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+                            }
+                        >
+                            Tạo mới bài viết
+                        </a>
+                    </Link>
                     <div
                         className={
-                            "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                            "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                         }
                         onClick={handleLogout}
                     >

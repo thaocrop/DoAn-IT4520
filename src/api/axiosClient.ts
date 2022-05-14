@@ -2,7 +2,7 @@ import axios from "axios";
 const queryString = require("query-string");
 
 import { API_URL } from "@configs";
-import { store } from "@redux";
+import { logout, store } from "@redux";
 
 const axiosClient = axios.create({
     baseURL: API_URL,
@@ -38,6 +38,8 @@ axiosClient.interceptors.response.use(
         // Handle errors
         if (error.response && error.response.status === 401) {
             //logout
+            //@ts-ignore
+            store.dispatch(logout());
         }
         throw error;
     }

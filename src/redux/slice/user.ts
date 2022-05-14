@@ -1,9 +1,11 @@
-import { AppDispatch } from "./../store";
+import store, { AppDispatch } from "./../store";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Dispatch } from "redux";
 
 import { IUser } from "@interfaces";
 import { userApi } from "@api";
 import { RootState } from ".";
+import { logout } from "./auth";
 
 interface IState {
     profile?: IUser;
@@ -13,9 +15,13 @@ const initialState: IState = {
     profile: undefined,
 };
 
-export const getUser = () => async (dispatch: AppDispatch) => {
-    const response = await userApi.getInfo();
-    dispatch(setUser(response.data.data));
+export const getUser = () => async (dispatch: Dispatch<any>) => {
+    try {
+        const response = await userApi.getInfo();
+        dispatch(setUser(response.data.data));
+    } catch {
+        dispatch(logout());
+    }
 };
 
 const userSlice = createSlice({

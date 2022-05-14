@@ -5,7 +5,7 @@ export const LayoutAdmin = (props: ILayout) => {
     return (
         <>
             <Sidebar />
-            <div className="relative md:ml-64 bg-blueGray-100">
+            <div className="relative md:ml-64 bg-slate-100">
                 <AdminHeader />
                 {/* Header */}
                 <HeaderStats />

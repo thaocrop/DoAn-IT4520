@@ -19,7 +19,7 @@ export const NotificationDropdown = () => {
     return (
         <>
             <a
-                className="text-blueGray-500 block py-1 px-3"
+                className="text-slate-500 block py-1 px-3"
                 href="javascript:void(0)"
                 ref={btnDropdownRef}
                 onClick={(e) => {
@@ -39,7 +39,7 @@ export const NotificationDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
@@ -48,7 +48,7 @@ export const NotificationDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
@@ -57,17 +57,17 @@ export const NotificationDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
                     Something else here
                 </a>
-                <div className="h-0 my-2 border border-solid border-blueGray-100" />
+                <div className="h-0 my-2 border border-solid border-slate-100" />
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >

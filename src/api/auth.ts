@@ -7,7 +7,7 @@ export const authApi = {
         const url = PATH_LOGIN;
         return axiosClient.post(url, params);
     },
-    register: (params: { email: string; inviteId: string }) => {
+    register: (params: ILogin) => {
         const url = PATH_REGISTER;
         return axiosClient.post(url, params);
     },

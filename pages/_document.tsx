@@ -11,7 +11,7 @@ class MyDocument extends Document {
                     <link rel="shortcut icon" href="/img/brand/favicon.ico" />
                     <link rel="apple-touch-icon" sizes="76x76" href="/img/brand/apple-icon.png" />
                 </Head>
-                <body className="text-blueGray-700 antialiased">
+                <body className="text-slate-700 antialiased">
                     <div id="page-transition"></div>
                     <Main />
                     <NextScript />

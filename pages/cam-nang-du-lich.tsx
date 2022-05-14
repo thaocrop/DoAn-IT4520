@@ -23,7 +23,7 @@ const CamNangDuLich = () => {
                                 <h1 className="text-white font-semibold text-5xl">
                                     Cẩm nang du lịch
                                 </h1>
-                                <p className="mt-4 text-lg text-blueGray-200">
+                                <p className="mt-4 text-lg text-slate-200">
                                     Hãy ghi chú lại những điều sau vào cẩm nang du lịch của bạn, nó
                                     sẽ giúp cho bạn có được chuyến trải nghiệm thú vị mà không cần
                                     lo lắng điều gì

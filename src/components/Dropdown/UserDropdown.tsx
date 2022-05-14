@@ -19,7 +19,7 @@ export const UserDropdown = () => {
     return (
         <>
             <a
-                className="hover:text-blueGray-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                className="hover:text-slate-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                 href="javascript:void(0)"
                 ref={btnDropdownRef}
                 onClick={() => {
@@ -38,7 +38,7 @@ export const UserDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
@@ -47,7 +47,7 @@ export const UserDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
@@ -56,17 +56,17 @@ export const UserDropdown = () => {
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >
                     Something else here
                 </a>
-                <div className="h-0 my-2 border border-solid border-blueGray-100" />
+                <div className="h-0 my-2 border border-solid border-slate-100" />
                 <a
                     href="javascript:void(0)"
                     className={
-                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+                        "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                     }
                     onClick={(e) => e.preventDefault()}
                 >

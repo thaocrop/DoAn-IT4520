@@ -17,13 +17,13 @@ export const PostItem = (props: Props) => {
     }, [slug]);
     return (
         <div
-            className="w-full lg:mb-0 justify-center py-4 flex flex-wrap border-t-2 border-blueGray-200 cursor-pointer"
+            className="w-full lg:mb-0 justify-center py-4 flex flex-wrap border-t-2 border-slate-200 cursor-pointer"
             onClick={handleClick}
         >
             <img alt={title} src={image} className=" rounded-lg object-cover h-48 " />
             <div className="ml-5 md:w-full xl:w-3/4">
                 <h5 className="text-xl font-bold">{title}</h5>
-                <p className="mt-1 text-sm text-blueGray-400 uppercase font-semibold">{date}</p>
+                <p className="mt-1 text-sm text-slate-400 uppercase font-semibold">{date}</p>
                 <p className="text-md font-light mt-2 text-Gray-200">{description}</p>
             </div>
         </div>
