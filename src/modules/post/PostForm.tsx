@@ -1,10 +1,11 @@
 import Autocomplete from "react-autocomplete";
 import { memo } from "react";
+import { useFormik } from "formik";
 
 import { MCInput } from "@components";
 import Editor from "src/components/common/Editor";
 import { IPostForm } from "@interfaces";
-import { useFormik } from "formik";
+import location from "public/location.json";
 
 interface Props {
     initialValues: IPostForm;
@@ -17,7 +18,7 @@ const PostFrom = (props: Props) => {
         console.log(values);
     };
 
-    const { values, handleChange, handleSubmit, errors } = useFormik({
+    const { values, handleChange, handleSubmit, errors, setFieldValue } = useFormik({
         initialValues,
         onSubmit,
     });
@@ -56,12 +57,8 @@ const PostFrom = (props: Props) => {
                                     Địa điểm
                                 </label>
                                 <Autocomplete
-                                    getItemValue={(item) => item.label}
-                                    items={[
-                                        { label: "apple" },
-                                        { label: "banana" },
-                                        { label: "pear" },
-                                    ]}
+                                    getItemValue={(item) => item.name}
+                                    items={location}
                                     wrapperStyle={{ width: "100%" }}
                                     renderItem={(item, isHighlighted) => {
                                         return (
@@ -72,7 +69,7 @@ const PostFrom = (props: Props) => {
                                                         : "white",
                                                 }}
                                             >
-                                                {item.label}
+                                                {item.name}
                                             </div>
                                         );
                                     }}
@@ -83,9 +80,9 @@ const PostFrom = (props: Props) => {
                                             placeholder=" Địa điểm"
                                         />
                                     )}
-                                    value=""
-                                    onChange={(e) => console.log(e.target.value)}
-                                    onSelect={(val) => console.log(val)}
+                                    value={values.location_id}
+                                    onChange={(e) => setFieldValue("location_id", e.target.value)}
+                                    onSelect={(val) => setFieldValue("location_id", val)}
                                 />
                             </div>
                             <div className="w-full ">
