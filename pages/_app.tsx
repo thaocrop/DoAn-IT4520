@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useEffect } from "react";
 import type { NextPage } from "next";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 

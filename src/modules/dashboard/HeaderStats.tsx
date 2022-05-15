@@ -45,8 +45,8 @@ export const HeaderStats = () => {
             <div className="px-4 md:px-10 mx-auto w-full">
                 <div>
                     {/* Card stats */}
-                    <div className="flex flex-wrap">
-                        <div className="w-full lg:w-6/12  px-4">
+                    <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:gap-12">
+                        <div className="w-full   ">
                             <LoadingOverlay
                                 styles={{
                                     overlay: (base) => ({
@@ -67,7 +67,7 @@ export const HeaderStats = () => {
                                 />
                             </LoadingOverlay>
                         </div>
-                        <div className="w-full lg:w-6/12  px-4">
+                        <div className="w-full gap-4  ">
                             <LoadingOverlay
                                 styles={{
                                     overlay: (base) => ({

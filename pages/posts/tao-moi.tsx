@@ -1,28 +1,52 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 
 import { MMPostForm } from "@modules";
 import { IPostForm } from "@interfaces";
 import { selectAuth } from "@redux";
+import { postApi } from "@api";
+import LoadingOverlayWrapper from "react-loading-overlay-ts";
 
+const initialValues: IPostForm = {
+    title: "",
+    slug: "",
+    location_id: "",
+    address: "",
+    short_description: "",
+    content: "",
+    image_url: "",
+};
 const PostNew = () => {
-    const initialValues: IPostForm = {
-        title: "",
-        slug: "",
-        location_id: "",
-        address: "",
-        short_description: "",
-        content: "",
-        image_url: "",
-    };
     const { auth } = useSelector(selectAuth);
+    const [error, setError] = useState<string | undefined>();
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         if (!auth) {
             Router.push("/dang-nhap");
         }
     }, [auth]);
+
+    const onSubmit = async (values: IPostForm) => {
+        try {
+            setError("");
+            setLoading(true);
+            await postApi.createPosts(values);
+            Router.push("/");
+        } catch (error: any) {
+            if (error.response) {
+                const mess = Array.isArray(error.response.data.errors)
+                    ? error.response.data.errors[0]
+                    : error.response.data.errors;
+                setError(mess);
+            } else {
+                setError("Có lỗi xảy ra!");
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <main className="profile-page">
@@ -66,7 +90,23 @@ const PostNew = () => {
                                 Tạo mới bài viết
                             </h3>
                         </div>
-                        <MMPostForm initialValues={initialValues} />
+                        <LoadingOverlayWrapper
+                            styles={{
+                                overlay: (base) => ({
+                                    ...base,
+                                    background: "rgba(0, 0, 0, 0.2)",
+                                }),
+                            }}
+                            active={loading}
+                            spinner
+                            text="Chờ chút ..."
+                        >
+                            <MMPostForm
+                                initialValues={initialValues}
+                                formError={error}
+                                onSubmit={onSubmit}
+                            />
+                        </LoadingOverlayWrapper>
                     </div>
                 </div>
             </section>

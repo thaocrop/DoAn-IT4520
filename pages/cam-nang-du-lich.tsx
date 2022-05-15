@@ -1,7 +1,33 @@
-import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+
+import { Status } from "@configs";
+import { IPost, IPostPage } from "@interfaces";
 import { Pagination, PostItem } from "src/components";
+import { postApi } from "@api";
 
 const CamNangDuLich = () => {
+    const [page, setPage] = useState<number>(1);
+    const [totalPage, setTotalPage] = useState<number>(1);
+    const [posts, setPosts] = useState<IPost[]>([]);
+
+    const fetchPost = useCallback(async (page: number) => {
+        const params: IPostPage = { page, status: Status.Active };
+
+        try {
+            const res = await postApi.getPosts(params);
+            if (res?.data) {
+                setPosts(res.data.docs);
+                setPage(res.data.page);
+                setTotalPage(res.data.totalPages);
+            }
+        } catch {}
+    }, []);
+
+    useEffect(() => {
+        const pageOne = 1;
+        fetchPost(pageOne);
+    }, [fetchPost]);
+
     return (
         <main>
             <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-50">
@@ -36,7 +62,17 @@ const CamNangDuLich = () => {
             <section className="pt-20 pb-48">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap flex-col items-center gap-6">
-                        <PostItem
+                        {posts.map((post) => (
+                            <PostItem
+                                key={post._id}
+                                title={post.title}
+                                image={post.image_url}
+                                description={post.short_description}
+                                date={post.createdAt.toString()}
+                                slug={post.slug}
+                            />
+                        ))}
+                        {/* <PostItem
                             title="10 địa điểm du lịch Singapore - Malaysia bạn không nên bỏ lỡ"
                             image="/img/camnhi-224706044743-tour-sing-malay.jpeg"
                             description="Với những tín đồ yêu thích sự xê dịch, Singapore, Malaysia chính
@@ -91,8 +127,14 @@ const CamNangDuLich = () => {
                             đây cũng khiến các bạn mê mẩn không kém đâu nè."
                             date="02/05/2022"
                             slug="5-nhat-ban"
-                        />
-                        <Pagination page={1} totalPage={9} />
+                        /> */}
+                        {posts.length < 1 && (
+                            <div className="flex justify-center w-full">Không có dữ liệu</div>
+                        )}
+
+                        {posts.length > 0 && (
+                            <Pagination page={page} totalPage={totalPage} handlePage={fetchPost} />
+                        )}
                     </div>
                 </div>
             </section>

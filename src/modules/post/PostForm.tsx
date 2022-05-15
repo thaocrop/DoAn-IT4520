@@ -16,6 +16,8 @@ import { selectConfig } from "@redux";
 
 interface Props {
     initialValues: IPostForm;
+    formError?: string;
+    onSubmit: (values: IPostForm) => void;
 }
 const validationSchema = yup.object({
     title: yup.string().required("Tiêu đề là bắt buộc"),
@@ -27,17 +29,9 @@ const validationSchema = yup.object({
     image_url: yup.string().required("Ảnh là bắt buộc"),
 });
 
-const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-];
-
 const PostFrom = (props: Props) => {
-    const { initialValues } = props;
+    const { initialValues, formError, onSubmit } = props;
     const { locations } = useSelector(selectConfig);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [formError, setFormError] = useState<string | undefined>();
 
     const formatLocation = locations.map((location) => {
         return {
@@ -46,31 +40,12 @@ const PostFrom = (props: Props) => {
         };
     });
 
-    const onSubmit = async (values: IPostForm) => {
-        try {
-            setFormError("");
-            setLoading(true);
-            await postApi.createPosts(values);
-            Router.push("/");
-        } catch (error: any) {
-            if (error.response) {
-                const mess = Array.isArray(error.response.data.errors)
-                    ? error.response.data.errors[0]
-                    : error.response.data.errors;
-                setFormError(mess);
-            } else {
-                setFormError("Có lỗi xảy ra!");
-            }
-        } finally {
-            setLoading(false);
-        }
-    };
-
     const { values, handleChange, handleSubmit, errors, setFieldValue, setFieldError } = useFormik({
         initialValues,
         onSubmit,
         validationSchema,
         validateOnChange: false,
+        enableReinitialize: true,
     });
 
     const memoSubmit = useCallback(() => {
@@ -86,7 +61,7 @@ const PostFrom = (props: Props) => {
                 formData.append("file", file);
                 try {
                     const res = await uploadApi.single(formData);
-                    const image = res?.data?.data?.path;
+                    const image = res?.data?.path;
                     if (image) {
                         setFieldValue("image_url", image);
                     }
@@ -111,7 +86,6 @@ const PostFrom = (props: Props) => {
 
     const handleChangeContent = useCallback(
         (content: string) => {
-            console.log(content);
             setFieldValue("content", content);
         },
         [setFieldValue]
@@ -155,22 +129,11 @@ const PostFrom = (props: Props) => {
     );
 
     return (
-        //@ts-ignore
-        <LoadingOverlay
-            styles={{
-                overlay: (base) => ({
-                    ...base,
-                    background: "rgba(0, 0, 0, 0.2)",
-                }),
-            }}
-            active={loading}
-            spinner
-            text="Chờ chút ..."
-        >
+        <>
             <div className="mt-10 pt-10 border-t border-slate-200">
                 <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-9/12 px-4 flex flex-col gap-4">
-                        <div className="flex justify-between gap-6 flex-wrap lg:flex-nowrap">
+                        <div className="flex gap-6 flex-wrap lg:flex-nowrap">
                             <div className="w-full">
                                 <MCInput
                                     title={"Tên bài viết"}
@@ -206,6 +169,9 @@ const PostFrom = (props: Props) => {
                                     options={formatLocation}
                                     placeholder="Địa điểm"
                                     onChange={handleChangeLocation}
+                                    value={formatLocation.find(
+                                        (location) => location.value === values.location_id
+                                    )}
                                 />
                                 {errors.location_id && (
                                     <span className="text-red-500 text-xs">
@@ -261,7 +227,7 @@ const PostFrom = (props: Props) => {
                                 <img
                                     alt="..."
                                     src={values.image_url || "/img/noimage.jpeg"}
-                                    className=" rounded-lg w-auto h-auto lg:max-h-64 object-cover  "
+                                    className=" rounded-lg w-auto h-auto  object-cover  "
                                 />
                             </div>
                         </div>
@@ -299,12 +265,12 @@ const PostFrom = (props: Props) => {
                             onClick={memoSubmit}
                             className="cursor-pointer h-12 text-white justify-center flex items-center font-bold rounded outline-none focus:outline-none bg-sky-500 active:bg-sky-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150"
                         >
-                            Tạo mới
+                            Nộp
                         </div>
                     </div>
                 </div>
             </div>
-        </LoadingOverlay>
+        </>
     );
 };
 

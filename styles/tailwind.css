@@ -1897,14 +1897,6 @@ select {
   justify-items: stretch;
 }
 
-.justify-start {
-  justify-content: flex-start;
-}
-
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -3808,14 +3800,6 @@ select {
     align-items: stretch;
   }
 
-  .md\:justify-start {
-    justify-content: flex-start;
-  }
-
-  .md\:justify-end {
-    justify-content: flex-end;
-  }
-
   .md\:justify-between {
     justify-content: space-between;
   }
@@ -3976,10 +3960,6 @@ select {
 
   .lg\:self-center {
     align-self: center;
-  }
-
-  .lg\:justify-start {
-    justify-content: flex-start;
   }
 
   .lg\:order-1 {

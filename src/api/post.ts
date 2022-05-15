@@ -22,6 +22,10 @@ export const postApi = {
         const url = PATH_POST;
         return await axiosClient.get(`${url}/${id}`);
     },
+    updatePost: async (id: string, params: Partial<IPostForm>) => {
+        const url = PATH_POST;
+        return await axiosClient.put(`${url}/${id}`, params);
+    },
     deletePost: async (id: string) => {
         const url = PATH_POST;
         return await axiosClient.delete(`${url}/${id}`);

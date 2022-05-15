@@ -51,12 +51,12 @@ export const PostTable = () => {
                     borderRadius: 10,
                 }),
             }}
-            className="rounded-lg"
+            className="rounded-lg w-full"
             active={loading}
             spinner
             text="Đang tải ..."
         >
-            <div className="relative min-h-screen-50 justify-between bg-white overflow-x-auto shadow-md sm:rounded-lg flex items-center flex-col min-h-64 ">
+            <div className="min-h-screen-50 w-full flex flex-col justify-between ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -91,7 +91,9 @@ export const PostTable = () => {
                     <div className="flex justify-center w-full">Không có dữ liệu</div>
                 )}
 
-                <Pagination page={page} totalPage={totalPage} handlePage={fetchPost} />
+                {posts.length > 0 && (
+                    <Pagination page={page} totalPage={totalPage} handlePage={fetchPost} />
+                )}
             </div>
         </LoadingOverlay>
     );

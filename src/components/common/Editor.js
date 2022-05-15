@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
+import { Editor, EditorState, RichUtils } from "draft-js";
 
 import { convertToHTML, convertFromHTML } from "draft-convert";
 

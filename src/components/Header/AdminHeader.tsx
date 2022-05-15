@@ -17,9 +17,15 @@ export const AdminHeader = () => {
                         Dashboard
                     </a>
                     {/* User */}
-                    {/* <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
-                        <UserDropdown />
-                    </ul> */}
+                    <ul className="flex-col md:flex-row list-none items-center hidden md:flex">
+                        <a
+                            className="hover:text-slate-200 text-white px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                            href="javascript:void(0)"
+                            onClick={() => {}}
+                        >
+                            <i className="fa fa-sign-out-alt"></i> &nbsp; Đăng Xuất
+                        </a>
+                    </ul>
                 </div>
             </nav>
             {/* End Navbar */}

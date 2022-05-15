@@ -11,6 +11,6 @@ export const MAX_NUMBER = 99999999;
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api";
 
 export const PostStatus = {
-    [Status.Active]: "Đã duyệt",
+    [Status.Active]: "Đã Duyệt",
     [Status.InActive]: "Mới",
 };

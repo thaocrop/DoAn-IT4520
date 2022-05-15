@@ -65,7 +65,7 @@ export const IndexDropdown = () => {
                                         "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                                     }
                                 >
-                                    Dashboard
+                                    <i className=" fa fa-tv"></i>&nbsp; Dashboard
                                 </a>
                             </Link>
                             <hr />
@@ -78,7 +78,7 @@ export const IndexDropdown = () => {
                                     "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
                                 }
                             >
-                                Tạo mới bài viết
+                                <i className=" fa fa-file-alt"></i>&nbsp; Tạo mới bài viết
                             </a>
                         </Link>
                     )}
@@ -88,7 +88,7 @@ export const IndexDropdown = () => {
                         }
                         onClick={handleLogout}
                     >
-                        Đăng Xuất
+                        <i className="fa fa-sign-out-alt"></i>&nbsp; Đăng Xuất
                     </div>
                 </div>
             </>

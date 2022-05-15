@@ -34,7 +34,7 @@ export const Pagination = (props: Props) => {
     }, [handlePage, totalPage]);
 
     return (
-        <div className="py-2 text-center ">
+        <div className="py-2 flex justify-center ">
             <nav className="block text-center">
                 <ul className="flex pl-0 rounded list-none flex-wrap">
                     <li>

@@ -10,6 +10,8 @@ export interface IPostForm {
     short_description: string;
     content: string;
     image_url: string;
+    status?: Status;
+    user_name?: string;
 }
 
 export interface IPost extends IPostForm {

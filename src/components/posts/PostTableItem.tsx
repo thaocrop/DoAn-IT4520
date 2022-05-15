@@ -3,6 +3,7 @@ import { useCallback } from "react";
 
 import { IPost } from "@interfaces";
 import { PostStatus } from "@configs";
+import Link from "next/link";
 
 interface Props {
     post: IPost;
@@ -18,24 +19,23 @@ export const PostTableItem = (props: Props) => {
 
     return (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-            >
+            <td scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white ">
                 {post.title}
             </td>
             <td className="px-6 py-4">{post.user_name || "Tác Giả"}</td>
             <td className="px-6 py-4">
-                <Moment format="YYYY/MM/DD HH:mm">{post.createdAt}</Moment>
+                <Moment format="HH:mm DD/MM/YYYY">{post.createdAt}</Moment>
             </td>
             <td className="px-6 py-4">{PostStatus[post.status]}</td>
-            <td className="px-6 py-4 text-right">
-                <a
-                    href="javascript:void(0)"
-                    className="font-medium text-blue-600 mr-2 dark:text-blue-500 hover:underline"
-                >
-                    Chỉnh sửa
-                </a>
+            <td className="px-6 py-4 flex flex-wrap  ">
+                <Link href={`/admin/posts/${post._id}`}>
+                    <a
+                        href="javascript:void(0)"
+                        className="font-medium text-blue-600 mr-2 dark:text-blue-500 hover:underline whitespace-nowrap"
+                    >
+                        Chỉnh sửa
+                    </a>
+                </Link>
                 {handleDeletePost && (
                     <a
                         href="javascript:void(0)"
