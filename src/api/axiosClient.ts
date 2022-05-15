@@ -28,9 +28,9 @@ axiosClient.interceptors.request.use((config) => {
 
 axiosClient.interceptors.response.use(
     (response) => {
-        // if (response && response.data) {
-        //     return response;
-        // }
+        if (response && response.data) {
+            return response.data;
+        }
         return response;
     },
 

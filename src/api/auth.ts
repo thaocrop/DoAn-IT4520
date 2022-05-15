@@ -3,12 +3,12 @@ import { ILogin } from "@interfaces";
 import { PATH_LOGIN, PATH_REGISTER } from "@configs";
 
 export const authApi = {
-    login: (params: ILogin) => {
+    login: async (params: ILogin) => {
         const url = PATH_LOGIN;
-        return axiosClient.post(url, params);
+        return await axiosClient.post(url, params);
     },
-    register: (params: ILogin) => {
+    register: async (params: ILogin) => {
         const url = PATH_REGISTER;
-        return axiosClient.post(url, params);
+        return await axiosClient.post(url, params);
     },
 };

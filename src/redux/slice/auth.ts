@@ -1,7 +1,6 @@
-import { IRegister } from "./../../interfaces/auth";
-import { createAsyncThunk, createSlice, PayloadAction, Dispatch } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, Dispatch } from "@reduxjs/toolkit";
 
-import { IAuth, ILogin } from "@interfaces";
+import { IAuth, ILogin, IRegister } from "@interfaces";
 import { authApi } from "@api";
 import { RootState } from ".";
 import { resetUser } from "./user";
@@ -19,7 +18,7 @@ export const login = createAsyncThunk<IAuth, ILogin>(
 );
 
 export const register = createAsyncThunk<IAuth, IRegister>(
-    "auth/login",
+    "auth/register",
     async (values: IRegister, { rejectWithValue }) => {
         try {
             const res = await authApi.register({
@@ -59,6 +58,11 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(login.fulfilled, (state, action: { payload: IAuth }) => {
+            if (action.payload.accessToken) {
+                state.auth = action.payload;
+            }
+        });
+        builder.addCase(register.fulfilled, (state, action: { payload: IAuth }) => {
             if (action.payload.accessToken) {
                 state.auth = action.payload;
             }

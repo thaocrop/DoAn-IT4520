@@ -4,25 +4,12 @@ import PropTypes from "prop-types";
 interface Props {
     statSubtitle: string;
     statTitle: string;
-    statArrow: "up" | "down";
-    statPercent: string;
-    statPercentColor: string;
-    statDescripiron: string;
     statIconName: string;
     statIconColor: string;
 }
 
 export const CardStats = (props: Props) => {
-    const {
-        statSubtitle,
-        statTitle,
-        statArrow,
-        statPercent,
-        statPercentColor,
-        statDescripiron,
-        statIconName,
-        statIconColor,
-    } = props;
+    const { statSubtitle, statTitle, statIconName, statIconColor } = props;
     return (
         <>
             <div className="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
@@ -47,21 +34,6 @@ export const CardStats = (props: Props) => {
                             </div>
                         </div>
                     </div>
-                    <p className="text-sm text-slate-400 mt-4">
-                        <span className={statPercentColor + " mr-2"}>
-                            <i
-                                className={
-                                    statArrow === "up"
-                                        ? "fas fa-arrow-up"
-                                        : statArrow === "down"
-                                        ? "fas fa-arrow-down"
-                                        : ""
-                                }
-                            ></i>{" "}
-                            {statPercent}%
-                        </span>
-                        <span className="whitespace-nowrap">{statDescripiron}</span>
-                    </p>
                 </div>
             </div>
         </>

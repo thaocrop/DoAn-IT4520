@@ -1,15 +1,27 @@
-import { AdminHeader, FooterAdmin, HeaderStats, Sidebar } from "@components";
+import Router from "next/router";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import { AdminHeader, FooterAdmin, Sidebar } from "@components";
 import { ILayout } from "@interfaces";
+import { selectAuth } from "@redux";
 
 export const LayoutAdmin = (props: ILayout) => {
+    const { auth } = useSelector(selectAuth);
+
+    useEffect(() => {
+        if (!auth) {
+            Router.push("/dang-nhap");
+        }
+    }, [auth]);
+
     return (
         <>
             <Sidebar />
             <div className="relative md:ml-64 bg-slate-100">
                 <AdminHeader />
                 {/* Header */}
-                <HeaderStats />
-                <div className="px-4 md:px-10 mx-auto w-full -m-24 mb-24">{props.children}</div>
+                {props.children}
                 <FooterAdmin />
             </div>
         </>

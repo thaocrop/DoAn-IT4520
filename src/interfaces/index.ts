@@ -6,3 +6,5 @@ export * from "./auth";
 export * from "./user";
 export * from "./route";
 export * from "./post";
+export * from "./location";
+export * from "./page";

@@ -1,9 +1,13 @@
-import { PATH_USER_PROFILE } from "@configs";
+import { PATH_USER_PROFILE, PATH_USER_ALL } from "@configs";
 import axiosClient from "./axiosClient";
 
 export const userApi = {
-    getInfo: () => {
+    getInfo: async () => {
         const url = PATH_USER_PROFILE;
-        return axiosClient.get(url);
+        return await axiosClient.get(url);
+    },
+    getAll: async () => {
+        const url = PATH_USER_ALL;
+        return await axiosClient.get(`${url}`);
     },
 };

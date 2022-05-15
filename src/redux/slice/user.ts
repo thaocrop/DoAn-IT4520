@@ -1,5 +1,4 @@
-import store, { AppDispatch } from "./../store";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { Dispatch } from "redux";
 
 import { IUser } from "@interfaces";
@@ -18,7 +17,7 @@ const initialState: IState = {
 export const getUser = () => async (dispatch: Dispatch<any>) => {
     try {
         const response = await userApi.getInfo();
-        dispatch(setUser(response.data.data));
+        dispatch(setUser(response.data));
     } catch {
         dispatch(logout());
     }

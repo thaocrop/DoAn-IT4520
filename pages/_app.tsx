@@ -5,8 +5,8 @@ import { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import "styles/tailwind.css";
 import "styles/index.css";
+import "styles/tailwind.css";
 import "draft-js/dist/Draft.css";
 import type { AppProps } from "next/app";
 import { store, persistor } from "src/redux";

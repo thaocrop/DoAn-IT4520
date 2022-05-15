@@ -92,7 +92,7 @@ const CamNangDuLich = () => {
                             date="02/05/2022"
                             slug="5-nhat-ban"
                         />
-                        <Pagination />
+                        <Pagination page={1} totalPage={9} />
                     </div>
                 </div>
             </section>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Footer, Header } from "@components";
 import { ILayout } from "@interfaces";
-import { getUser, selectAuth } from "@redux";
+import { getLocations, getUser, selectAuth } from "@redux";
 // import { selectApp, setLoading } from "src/redux";
 
 export const LayoutApp = (props: ILayout) => {
@@ -15,6 +15,7 @@ export const LayoutApp = (props: ILayout) => {
     // const loading = useSelector(selectApp).loading;
 
     useEffect(() => {
+        dispatch(getLocations());
         if (auth) {
             dispatch(getUser());
         }

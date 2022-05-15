@@ -49,7 +49,7 @@ export const IndexDropdown = () => {
                         "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
                     }
                 >
-                    {profile.user_type === UserType.Admin && (
+                    {profile.user_type === UserType.Admin ? (
                         <>
                             <span
                                 className={
@@ -70,17 +70,18 @@ export const IndexDropdown = () => {
                             </Link>
                             <hr />
                         </>
+                    ) : (
+                        <Link href="/posts/tao-moi">
+                            <a
+                                href="javascript:void(0)"
+                                className={
+                                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
+                                }
+                            >
+                                Tạo mới bài viết
+                            </a>
+                        </Link>
                     )}
-                    <Link href="/posts/tao-moi">
-                        <a
-                            href="javascript:void(0)"
-                            className={
-                                "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"
-                            }
-                        >
-                            Tạo mới bài viết
-                        </a>
-                    </Link>
                     <div
                         className={
                             "cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700"

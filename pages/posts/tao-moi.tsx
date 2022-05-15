@@ -1,15 +1,28 @@
+import { useEffect } from "react";
+import Router from "next/router";
+import { useSelector } from "react-redux";
+
 import { MMPostForm } from "@modules";
 import { IPostForm } from "@interfaces";
+import { selectAuth } from "@redux";
 
 const PostNew = () => {
     const initialValues: IPostForm = {
         title: "",
         slug: "",
         location_id: "",
+        address: "",
         short_description: "",
         content: "",
         image_url: "",
     };
+    const { auth } = useSelector(selectAuth);
+
+    useEffect(() => {
+        if (!auth) {
+            Router.push("/dang-nhap");
+        }
+    }, [auth]);
 
     return (
         <main className="profile-page">
