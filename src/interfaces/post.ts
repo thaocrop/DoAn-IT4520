@@ -20,7 +20,7 @@ export interface IPost extends IPostForm {
     user_id: string;
     user_name: string;
     like?: number;
-    comments: Comment[];
+    comments: IComment[];
     status: Status;
     rates: number[];
     rate: number;
@@ -28,7 +28,8 @@ export interface IPost extends IPostForm {
     updateAt: Date;
 }
 
-export type comment = {
+export type IComment = {
+    _id: string;
     user_name: string;
     comment: string;
     createdAt: Date;
@@ -36,4 +37,12 @@ export type comment = {
 
 export interface IPostPage extends IPage {
     status?: Status;
+}
+
+export interface IPostRate {
+    rate: number;
+}
+
+export interface IPostComment {
+    comment: string;
 }

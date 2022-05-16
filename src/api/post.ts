@@ -1,7 +1,8 @@
+import { PATH_RATE } from "./../configs/routes";
 const queryString = require("query-string");
 
-import { PATH_POST, PATH_POST_ALL } from "@configs";
-import { IPostForm, IPostPage } from "@interfaces";
+import { PATH_POST, PATH_POST_ALL, PATH_LIKE, PATH_COMMENT } from "@configs";
+import { IPostComment, IPostForm, IPostPage, IPostRate } from "@interfaces";
 import axiosClient from "./axiosClient";
 
 export const postApi = {
@@ -29,5 +30,17 @@ export const postApi = {
     deletePost: async (id: string) => {
         const url = PATH_POST;
         return await axiosClient.delete(`${url}/${id}`);
+    },
+    likePost: async (id: string) => {
+        const url = PATH_POST;
+        return await axiosClient.post(`${url}/${id}${PATH_LIKE}`);
+    },
+    ratePost: async (id: string, params: IPostRate) => {
+        const url = PATH_POST;
+        return await axiosClient.post(`${url}/${id}${PATH_RATE}`, params);
+    },
+    commentPost: async (id: string, params: IPostComment) => {
+        const url = PATH_POST;
+        return await axiosClient.post(`${url}/${id}${PATH_COMMENT}`, params);
     },
 };

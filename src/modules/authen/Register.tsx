@@ -49,7 +49,7 @@ const Register = (props: Props) => {
     const { values, handleSubmit, handleChange, setFieldError, errors, touched } = useFormik({
         initialValues,
         onSubmit,
-        validateOnChange: true,
+        validateOnChange: false,
         validationSchema,
     });
     const memoSubmit = useCallback(() => handleSubmit(), [handleSubmit]);
@@ -109,7 +109,7 @@ const Register = (props: Props) => {
                         Của My Travel
                     </span>
                 </label>
-                {errors.term && <span className="text-red-500 text-xs">{errors.term}</span>}
+                {errors.term && <p className="text-red-500 text-xs">{errors.term}</p>}
             </div>
 
             <div className="text-center mt-6">

@@ -63,14 +63,7 @@ const CamNangDuLich = () => {
                 <div className="container mx-auto px-4">
                     <div className="flex flex-wrap flex-col items-center gap-6">
                         {posts.map((post) => (
-                            <PostItem
-                                key={post._id}
-                                title={post.title}
-                                image={post.image_url}
-                                description={post.short_description}
-                                date={post.createdAt.toString()}
-                                slug={post.slug}
-                            />
+                            <PostItem post={post} key={post._id} />
                         ))}
                         {/* <PostItem
                             title="10 địa điểm du lịch Singapore - Malaysia bạn không nên bỏ lỡ"
