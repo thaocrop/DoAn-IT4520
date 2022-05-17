@@ -91,9 +91,7 @@ export const PostTable = () => {
                     <div className="flex justify-center w-full">Không có dữ liệu</div>
                 )}
 
-                {posts.length > 0 && (
-                    <Pagination page={page} totalPage={totalPage} handlePage={fetchPost} />
-                )}
+                <Pagination page={page} totalPage={totalPage} handlePage={fetchPost} />
             </div>
         </LoadingOverlay>
     );

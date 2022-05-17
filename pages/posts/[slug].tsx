@@ -143,7 +143,7 @@ const PostDetail = () => {
                                 <img
                                     alt={post?.title}
                                     src={post?.image_url || "/img/noimage.jpeg"}
-                                    className="lg:max-w-sm rounded-lg w-auto object-cover  "
+                                    className="xl:max-w-sm rounded-lg w-auto object-cover  "
                                 />
                             </div>
 
@@ -165,7 +165,7 @@ const PostDetail = () => {
                                         {post?.address}
                                     </div>
                                 </div>
-                                <div className="text-sm flex flex-wrap gap-y-2 leading-normal mt-0 font-bold uppercase">
+                                <div className="text-sm flex w-1/2 sm:w-1/3 xl:w-2/5 gap-y-2 leading-normal mt-0 font-bold uppercase">
                                     <div className="w-1/3 text-emerald-400">
                                         <i className="fas fa-comment mr-2 text-xl "></i>
                                         {post?.comments.length}
@@ -174,7 +174,7 @@ const PostDetail = () => {
                                         <i className="fas fa-thumbs-up mr-2 text-xl "></i>
                                         {post?.like}
                                     </div>
-                                    <div className="w-1/3 text-red-400">
+                                    <div className="w-1/3 text-red-400 ">
                                         <i className="fas fa-star mr-2 text-xl "></i>
                                         {(post?.rate || 0) / 20}
                                     </div>

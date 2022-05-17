@@ -68,7 +68,7 @@ const CHeader = () => {
                                             : "text-slate-700"
                                     } px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold`}
                                 >
-                                    <Link href="/">Bạn muốn đến?</Link>
+                                    <Link href="/noi-ban-muon-den">Bạn muốn đến?</Link>
                                 </a>
                             </li>
                         </ul>

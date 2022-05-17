@@ -13,3 +13,8 @@ export enum LocationType {
     DISTRICT = "DISTRICT",
     WARD = "WARD",
 }
+export enum PostFilterType {
+    LIKE = "LIKE",
+    COMMENT = "COMMENT",
+    RATE = "RATE",
+}

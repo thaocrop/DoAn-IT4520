@@ -18,3 +18,11 @@ export function objectToCamelCase(origObj: any) {
         return newObj;
     }, {});
 }
+
+export function limitWord(string: string, limit: number = 10, suffix: string = "...") {
+    const numberWords = string.split(" ");
+    if (numberWords.length > limit) {
+        return [...numberWords.slice(0, limit), suffix].join(" ");
+    }
+    return string;
+}

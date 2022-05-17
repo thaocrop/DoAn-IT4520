@@ -5,13 +5,11 @@ import * as yup from "yup";
 import slugify from "react-slugify";
 import Select, { SingleValue } from "react-select";
 import { useSelector } from "react-redux";
-import Router from "next/router";
-import LoadingOverlay from "react-loading-overlay-ts";
 
 import { MCInput } from "@components";
 import Editor from "src/components/common/Editor";
 import { IPostForm } from "@interfaces";
-import { postApi, uploadApi } from "@api";
+import { uploadApi } from "@api";
 import { selectConfig } from "@redux";
 
 interface Props {

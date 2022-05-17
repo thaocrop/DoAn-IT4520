@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { ReactElement, ReactNode, useEffect } from "react";
 import type { NextPage } from "next";
+import Head from "next/head";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "styles/index.css";
@@ -30,6 +31,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             <ThemeProvider theme={theme}>
                 <PersistGate loading={null} persistor={persistor}>
                     <Layout>
+                        <Head>
+                            <title>My Travel</title>
+                            <meta name="description" content="by My Travel" />
+                            <link rel="icon" href="/favicon.ico" />
+                        </Head>
                         <Component {...pageProps} />
                     </Layout>
                 </PersistGate>

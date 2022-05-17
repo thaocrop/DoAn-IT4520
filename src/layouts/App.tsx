@@ -15,6 +15,7 @@ export const LayoutApp = (props: ILayout) => {
     // const loading = useSelector(selectApp).loading;
 
     useEffect(() => {
+        dispatch(getLocations());
         if (auth) {
             dispatch(getUser());
         }

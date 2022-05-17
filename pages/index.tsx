@@ -1,25 +1,49 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { ReactElement } from "react";
-
-import { LayoutApp } from "@layouts";
-
-import { NextPageWithLayout } from "./_app";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
+import { LayoutApp } from "@layouts";
+import { NextPageWithLayout } from "./_app";
+import { IPost, IPostPage } from "@interfaces";
+import { postApi } from "@api";
+import { PostFilterType, Status } from "@configs";
+import { limitWord } from "@utils";
+
 const Home: NextPageWithLayout = () => {
+    const [likedPost, setLikedPost] = useState<IPost[]>([]);
+    const [ratedPost, setRatedPost] = useState<IPost[]>([]);
+    const [commentsPost, setCommentsPost] = useState<IPost[]>([]);
+
+    const fetchPost = useCallback(async (post_filter: PostFilterType) => {
+        const params: IPostPage = { post_filter, status: Status.Active };
+
+        try {
+            const res = await postApi.getPosts(params);
+            if (res?.data) {
+                if (post_filter === PostFilterType.LIKE) {
+                    setLikedPost(res.data.docs);
+                } else if (post_filter === PostFilterType.RATE) {
+                    setRatedPost(res.data.docs);
+                } else if (post_filter === PostFilterType.COMMENT) {
+                    setCommentsPost(res.data.docs);
+                }
+            }
+        } catch {}
+    }, []);
+
+    useEffect(() => {
+        fetchPost(PostFilterType.COMMENT);
+        fetchPost(PostFilterType.LIKE);
+        fetchPost(PostFilterType.RATE);
+    }, [fetchPost]);
+
     return (
         <main>
-            <Head>
-                <title>My Travel</title>
-                <meta name="description" content="by My Travel" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-
             <section className="header relative pt-16 items-center flex h-screen max-h-860-px">
                 <div className="container mx-auto items-center flex flex-wrap">
-                    <div className="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+                    <div className="w-full  lg:w-6/12 xl:w-6/12 px-4">
                         <div className="pt-32 sm:pt-0">
                             <h2 className="font-semibold text-4xl text-emerald-700">
                                 Giới thiệu chung
@@ -46,14 +70,14 @@ const Home: NextPageWithLayout = () => {
                                     <Link href="/cam-nang-du-lich">Cẩm Nang Du Lịch</Link>
                                 </a>
                                 <a className="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-slate-700 active:bg-slate-600 uppercase text-sm shadow hover:shadow-lg">
-                                    <Link href="/">Nơi bạn muốn đến</Link>
+                                    <Link href="/noi-ban-muon-den">Nơi bạn muốn đến</Link>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <img
-                    className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px"
+                    className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px hidden lg:block"
                     src="/img/gioithieu.JPG"
                     alt="..."
                 />
@@ -85,7 +109,7 @@ const Home: NextPageWithLayout = () => {
                                 <img
                                     alt="..."
                                     src="/img/kinh-nghiem-a-z.jpeg"
-                                    className="w-full align-middle rounded-t-lg"
+                                    className="w-full align-middle rounded-t-lg "
                                 />
                                 <blockquote className="relative p-8 mb-4">
                                     <svg
@@ -114,62 +138,88 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-full md:w-6/12 px-4">
                             <div className="flex flex-wrap">
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Malaysia bạn không nên bỏ lỡ
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Với những tín đồ yêu thích sự xê dịch, Singapore,
-                                                Malaysia chính là vùng đất hứa đáng để đặt chân đến
-                                                một lần....
-                                            </p>
+                                    {commentsPost[0] && (
+                                        <div className="relative flex flex-col mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${commentsPost[0].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(commentsPost[0].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(
+                                                        commentsPost[0].short_description,
+                                                        20
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch mùa hè Nhật Bản
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Nhật Bản được thế giới biết đến với những bộ kimono
-                                                xinh đẹp, duyên dáng hay cách cúi chào gập người và
-                                                nền ẩm thực đầy phong phú....
-                                            </p>
+                                    )}
+                                    {commentsPost[2] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${commentsPost[2].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(commentsPost[2].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(
+                                                        commentsPost[2].short_description,
+                                                        20
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col min-w-0 mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Cầu kính Bạch Long Mộc Châu
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Thêm tọa độ check in cho team thích những thử thách
-                                                mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
-                                                thiên nhiên hùng vĩ...
-                                            </p>
+                                    {commentsPost[1] && (
+                                        <div className="relative flex flex-col min-w-0 mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${commentsPost[1].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(commentsPost[1].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(
+                                                        commentsPost[1].short_description,
+                                                        20
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Singapore 2022 siêu vui
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Bạn đã dự trù chi phí cho chuyến du lịch Singapore
-                                                2022 tự túc của mình khoảng 20 triệu....
-                                            </p>
+                                    )}
+                                    {commentsPost[3] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${commentsPost[3].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(commentsPost[3].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(
+                                                        commentsPost[3].short_description,
+                                                        20
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div className="container mx-auto overflow-hidden pb-20">
                     <div className="flex flex-wrap items-center pt-32">
                         <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto ">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-sky-400">
@@ -203,55 +253,72 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-full md:w-6/12 px-4">
                             <div className="flex flex-wrap">
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Malaysia bạn không nên bỏ lỡ
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Với những tín đồ yêu thích sự xê dịch, Singapore,
-                                                Malaysia chính là vùng đất hứa đáng để đặt chân đến
-                                                một lần....
-                                            </p>
+                                    {likedPost[0] && (
+                                        <div className="relative flex flex-col mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${likedPost[0].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(likedPost[0].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(likedPost[0].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch mùa hè Nhật Bản
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Nhật Bản được thế giới biết đến với những bộ kimono
-                                                xinh đẹp, duyên dáng hay cách cúi chào gập người và
-                                                nền ẩm thực đầy phong phú....
-                                            </p>
+                                    )}
+                                    {likedPost[2] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${likedPost[2].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(likedPost[2].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(likedPost[2].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col min-w-0 mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Cầu kính Bạch Long Mộc Châu
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Thêm tọa độ check in cho team thích những thử thách
-                                                mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
-                                                thiên nhiên hùng vĩ...
-                                            </p>
+                                    {likedPost[1] && (
+                                        <div className="relative flex flex-col min-w-0 mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${likedPost[1].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(likedPost[1].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(likedPost[1].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Singapore 2022 siêu vui
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Bạn đã dự trù chi phí cho chuyến du lịch Singapore
-                                                2022 tự túc của mình khoảng 20 triệu....
-                                            </p>
+                                    )}
+                                    {likedPost[3] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${likedPost[3].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(likedPost[3].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(likedPost[3].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -291,55 +358,72 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-full md:w-6/12 px-4">
                             <div className="flex flex-wrap">
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Malaysia bạn không nên bỏ lỡ
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Với những tín đồ yêu thích sự xê dịch, Singapore,
-                                                Malaysia chính là vùng đất hứa đáng để đặt chân đến
-                                                một lần....
-                                            </p>
+                                    {ratedPost[0] && (
+                                        <div className="relative flex flex-col mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${ratedPost[0].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(ratedPost[0].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(ratedPost[0].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch mùa hè Nhật Bản
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Nhật Bản được thế giới biết đến với những bộ kimono
-                                                xinh đẹp, duyên dáng hay cách cúi chào gập người và
-                                                nền ẩm thực đầy phong phú....
-                                            </p>
+                                    )}
+                                    {ratedPost[2] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${ratedPost[2].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(ratedPost[2].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(ratedPost[2].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                                 <div className="w-full md:w-6/12 px-4">
-                                    <div className="relative flex flex-col min-w-0 mt-4">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Cầu kính Bạch Long Mộc Châu
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Thêm tọa độ check in cho team thích những thử thách
-                                                mạo hiểm, muốn chiêm ngưỡng trọn vẹn khung cảnh
-                                                thiên nhiên hùng vĩ...
-                                            </p>
+                                    {ratedPost[1] && (
+                                        <div className="relative flex flex-col min-w-0 mt-4">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${ratedPost[1].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(ratedPost[1].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(ratedPost[1].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="relative flex flex-col min-w-0">
-                                        <div className="px-4 py-5 flex-auto">
-                                            <h6 className="text-xl mb-1 font-semibold">
-                                                Du lịch Singapore 2022 siêu vui
-                                            </h6>
-                                            <p className="mb-4 text-slate-500">
-                                                Bạn đã dự trù chi phí cho chuyến du lịch Singapore
-                                                2022 tự túc của mình khoảng 20 triệu....
-                                            </p>
+                                    )}
+                                    {ratedPost[3] && (
+                                        <div className="relative flex flex-col min-w-0">
+                                            <div className="px-4 py-5 flex-auto">
+                                                <Link href={`posts/${ratedPost[3].slug}`}>
+                                                    <a href="javascript:void(0)">
+                                                        <h6 className="text-xl mb-1 font-semibold">
+                                                            {limitWord(ratedPost[3].title)}
+                                                        </h6>
+                                                    </a>
+                                                </Link>
+                                                <p className="mb-4 text-slate-500">
+                                                    {limitWord(ratedPost[3].short_description, 20)}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                         </div>

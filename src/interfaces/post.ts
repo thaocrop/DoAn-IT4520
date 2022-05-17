@@ -1,4 +1,4 @@
-import { Status } from "@configs";
+import { PostFilterType, Status } from "@configs";
 import { ILocation } from "./location";
 import { IPage } from "./page";
 
@@ -37,6 +37,8 @@ export type IComment = {
 
 export interface IPostPage extends IPage {
     status?: Status;
+    post_filter?: PostFilterType;
+    location_id?: string;
 }
 
 export interface IPostRate {
