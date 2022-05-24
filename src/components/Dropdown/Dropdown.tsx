@@ -28,6 +28,7 @@ export const IndexDropdown = () => {
     const closeDropdownPopover = () => {
         setDropdownPopoverShow(false);
     };
+
     if (profile) {
         return (
             <>

@@ -58,7 +58,6 @@ export default class CEditor extends Component {
                         editorState={editorState}
                         handleKeyCommand={this.handleKeyCommand}
                         onChange={this.onChange}
-                        placeholder={title || "Tell a story..."}
                         editorKey="foobar"
                         spellCheck={false}
                         ref={(element) => {

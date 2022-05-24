@@ -185,9 +185,6 @@ const PostFrom = (props: Props) => {
                                     onChange={handleChange}
                                     error={errors.address}
                                 />
-                                {errors.address && (
-                                    <span className="text-red-500 text-xs">{errors.address}</span>
-                                )}
                             </div>
                         </div>
                         <div className="w-full ">

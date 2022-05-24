@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import { memo, useCallback } from "react";
+import { ChangeEventHandler, memo, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import * as yup from "yup";
@@ -18,10 +18,19 @@ const initialValues: IRegister = {
 };
 
 const validationSchema = yup.object({
-    user_name: yup.string().required("Tên đăng nhập là bắt buộc"),
-    password: yup.string().required("Mật khẩu là bắt buộc"),
+    user_name: yup
+        .string()
+        .max(10, "Tên đăng nhập không vượt quá 10 ký tự")
+        .required("Tên đăng nhập là bắt buộc"),
+    password: yup
+        .string()
+        .min(6, "Tên đăng nhập phải dài hơn 6 ký tự")
+        .max(32, "Tên đăng nhập không vượt quá 32 ký tự")
+        .required("Mật khẩu là bắt buộc"),
     confirm_password: yup
         .string()
+        .min(6, "Tên đăng nhập phải dài hơn 6 ký tự")
+        .max(32, "Tên đăng nhập không vượt quá 32 ký tự")
         .oneOf([yup.ref("password"), null], "Mật khẩu nhập lại phải khớp")
         .required("Mật khẩu nhập lại là bắt buộc"),
     term: yup.boolean().oneOf([true], "Bạn phải tuân thủ các điều khoản Và chính sách của dịch vụ"),
@@ -46,7 +55,7 @@ const Register = (props: Props) => {
         [dispatch]
     );
 
-    const { values, handleSubmit, handleChange, setFieldError, errors, touched } = useFormik({
+    const { values, handleSubmit, handleChange, setFieldError, errors, setFieldValue } = useFormik({
         initialValues,
         onSubmit,
         validateOnChange: false,
@@ -54,6 +63,13 @@ const Register = (props: Props) => {
     });
     const memoSubmit = useCallback(() => handleSubmit(), [handleSubmit]);
 
+    const handleChangeUserName: ChangeEventHandler<HTMLInputElement> = useCallback(
+        (event) => {
+            const value = event.target.value;
+            setFieldValue("user_name", value.replaceAll(" ", ""));
+        },
+        [setFieldValue]
+    );
     return (
         <form>
             <div className="relative w-full mb-3">
@@ -62,7 +78,7 @@ const Register = (props: Props) => {
                     value={values.user_name}
                     name="user_name"
                     error={errors.user_name}
-                    onChange={handleChange}
+                    onChange={handleChangeUserName}
                 />
             </div>
 
