@@ -18,11 +18,7 @@ export const PostItem = (props: Props) => {
             className="w-full lg:mb-0 gap-y-4 justify-center py-4 flex flex-wrap border-t-2 border-slate-200 cursor-pointer"
             onClick={handleClick}
         >
-            <img
-                alt={post.title}
-                src={post.image_url}
-                className=" rounded-lg object-cover xl:h-48 "
-            />
+            <img alt={""} src={post.image_url} className=" rounded-lg object-cover xl:h-48 " />
             <div className="lg:ml-5 md:w-full xl:w-3/4">
                 <h5 className="text-xl font-bold">{post.title}</h5>
                 <p className="mt-1 text-sm text-slate-400 uppercase font-semibold">
