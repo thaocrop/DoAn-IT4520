@@ -1,28 +1,27 @@
-import { createRef, useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { createPopper } from "@popperjs/core";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
-import { logout, selectAuth, selectUser } from "@redux";
+import { logout, selectUser } from "@redux";
 import { UserType } from "@configs";
 
 export const IndexDropdown = () => {
     const { profile } = useSelector(selectUser);
+    const { pathname } = useRouter();
     // dropdown props
     const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
-    const btnDropdownRef = createRef<HTMLAnchorElement>();
-    const popoverDropdownRef = createRef<HTMLDivElement>();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setDropdownPopoverShow(false);
+    }, [pathname]);
 
     const handleLogout = useCallback(() => {
         dispatch(logout());
     }, [dispatch]);
 
     const openDropdownPopover = () => {
-        //@ts-ignore
-        createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
-            placement: "bottom-start",
-        });
         setDropdownPopoverShow(true);
     };
     const closeDropdownPopover = () => {
@@ -31,11 +30,10 @@ export const IndexDropdown = () => {
 
     if (profile) {
         return (
-            <>
+            <div className="relative">
                 <a
                     className="hover:text-slate-500 text-slate-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                     href="javascript:void(0)"
-                    ref={btnDropdownRef}
                     onClick={(e) => {
                         e.preventDefault();
                         dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
@@ -44,10 +42,9 @@ export const IndexDropdown = () => {
                     <i className="fa fa-solid fa-user"></i> &nbsp; {profile.user_name}
                 </a>
                 <div
-                    ref={popoverDropdownRef}
                     className={
                         (dropdownPopoverShow ? "block " : "hidden ") +
-                        "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+                        "bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48 absolute"
                     }
                 >
                     {profile.user_type === UserType.Admin ? (
@@ -92,7 +89,7 @@ export const IndexDropdown = () => {
                         <i className="fa fa-sign-out-alt"></i>&nbsp; Đăng Xuất
                     </div>
                 </div>
-            </>
+            </div>
         );
     } else {
         return <></>;
