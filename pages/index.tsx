@@ -79,7 +79,7 @@ const Home: NextPageWithLayout = () => {
                 <img
                     className="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px hidden lg:block"
                     src="/img/gioithieu.JPG"
-                    alt="..."
+                    alt=""
                 />
             </section>
             <section className="mt-48 md:mt-40 pb-40 relative bg-slate-100">
@@ -107,7 +107,7 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-32">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-emerald-400">
                                 <img
-                                    alt="..."
+                                    alt=""
                                     src="/img/kinh-nghiem-a-z.jpeg"
                                     className="w-full align-middle rounded-t-lg "
                                 />
@@ -224,7 +224,7 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto ">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-sky-400">
                                 <img
-                                    alt="..."
+                                    alt=""
                                     src="/img/an-va-choi.jpeg"
                                     className="w-full align-middle rounded-t-lg "
                                 />
@@ -328,7 +328,7 @@ const Home: NextPageWithLayout = () => {
                         <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto ">
                             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-400">
                                 <img
-                                    alt="..."
+                                    alt=""
                                     src="/img/checkin-dep.jpeg"
                                     className="w-full align-middle rounded-t-lg"
                                 />

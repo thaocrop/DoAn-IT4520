@@ -226,7 +226,7 @@ const PostFrom = (props: Props) => {
                             </div>
                             <div className="w-full lg:w-2/4">
                                 <img
-                                    alt="..."
+                                    alt=""
                                     src={values.image_url || "/img/noimage.jpeg"}
                                     className=" rounded-lg w-auto h-auto  object-cover  "
                                 />

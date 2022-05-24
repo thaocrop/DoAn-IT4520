@@ -141,7 +141,7 @@ const PostDetail = () => {
                         <div className="w-full lg:w-9/12 m-auto flex justify-between mt-24 px-4 flex-wrap">
                             <div className="relative  ">
                                 <img
-                                    alt={post?.title}
+                                    alt={""}
                                     src={post?.image_url || "/img/noimage.jpeg"}
                                     className="xl:max-w-sm rounded-lg w-auto object-cover  "
                                 />
