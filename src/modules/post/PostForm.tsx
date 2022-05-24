@@ -18,11 +18,17 @@ interface Props {
     onSubmit: (values: IPostForm) => void;
 }
 const validationSchema = yup.object({
-    title: yup.string().required("Tiêu đề là bắt buộc"),
-    slug: yup.string().required("Slug là bắt buộc"),
+    title: yup.string().max(50, "Tiêu đề không vượt quá 50 ký tự").required("Tiêu đề là bắt buộc"),
+    slug: yup.string().max(50, "Slug không vượt quá 50 ký tự").required("Slug là bắt buộc"),
     location_id: yup.string().required("Địa điểm là bắt buộc"),
-    address: yup.string().required("Địa chỉ cụ thể là bắt buộc"),
-    short_description: yup.string().required("Mô tả ngắn là bắt buộc"),
+    address: yup
+        .string()
+        .max(150, "Địa chỉ cụ thể không vượt quá 150 ký tự")
+        .required("Địa chỉ cụ thể là bắt buộc"),
+    short_description: yup
+        .string()
+        .max(255, "Địa chỉ cụ thể không vượt quá 255 ký tự")
+        .required("Mô tả ngắn là bắt buộc"),
     content: yup.string().required("Nội dung là bắt buộc"),
     image_url: yup.string().required("Ảnh là bắt buộc"),
 });
