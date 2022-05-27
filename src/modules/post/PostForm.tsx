@@ -27,7 +27,7 @@ const validationSchema = yup.object({
         .required("Địa chỉ cụ thể là bắt buộc"),
     short_description: yup
         .string()
-        .max(255, "Địa chỉ cụ thể không vượt quá 255 ký tự")
+        .max(255, "Mô tả ngắn không vượt quá 255 ký tự")
         .required("Mô tả ngắn là bắt buộc"),
     content: yup.string().required("Nội dung là bắt buộc"),
     image_url: yup.string().required("Ảnh là bắt buộc"),
@@ -60,6 +60,7 @@ const PostFrom = (props: Props) => {
         async (e: any) => {
             const file = e.target.files[0];
             if (file) {
+                setFieldError("image_url", undefined);
                 const formData = new FormData();
                 //@ts-ignore
                 formData.append("file", file);

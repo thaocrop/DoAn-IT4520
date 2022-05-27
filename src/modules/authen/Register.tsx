@@ -24,13 +24,13 @@ const validationSchema = yup.object({
         .required("Tên đăng nhập là bắt buộc"),
     password: yup
         .string()
-        .min(6, "Tên đăng nhập phải dài hơn 6 ký tự")
-        .max(32, "Tên đăng nhập không vượt quá 32 ký tự")
+        .min(5, "Mật khẩu phải ít nhất 6 ký tự")
+        .max(32, "Mật khẩu không vượt quá 32 ký tự")
         .required("Mật khẩu là bắt buộc"),
     confirm_password: yup
         .string()
-        .min(6, "Tên đăng nhập phải dài hơn 6 ký tự")
-        .max(32, "Tên đăng nhập không vượt quá 32 ký tự")
+        .min(5, "Mật khẩu phải ít nhất 6 ký tự")
+        .max(32, "Mật khẩu không vượt quá 32 ký tự")
         .oneOf([yup.ref("password"), null], "Mật khẩu nhập lại phải khớp")
         .required("Mật khẩu nhập lại là bắt buộc"),
     term: yup.boolean().oneOf([true], "Bạn phải tuân thủ các điều khoản Và chính sách của dịch vụ"),

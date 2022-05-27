@@ -22,8 +22,8 @@ const validationSchema = yup.object({
         .required("Tên đăng nhập là bắt buộc"),
     password: yup
         .string()
-        .min(6, "Tên đăng nhập phải dài hơn 6 ký tự")
-        .max(32, "Tên đăng nhập không vượt quá 32 ký tự")
+        .min(5, "Mật khẩu phải ít nhất 6 ký tự")
+        .max(32, "Mật khẩu không vượt quá 32 ký tự")
         .required("Mật khẩu là bắt buộc"),
 });
 
