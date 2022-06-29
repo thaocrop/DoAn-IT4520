@@ -8,7 +8,7 @@ import { Pagination, PostItem } from "src/components";
 import { postApi } from "@api";
 import { selectConfig } from "@redux";
 
-const CamNangDuLich = () => {
+const NoiBanMuonDen = () => {
     const { locations } = useSelector(selectConfig);
     const [page, setPage] = useState<number>(1);
     const [locationId, setLocationId] = useState<string>();
@@ -177,4 +177,4 @@ const CamNangDuLich = () => {
     );
 };
 
-export default CamNangDuLich;
+export default NoiBanMuonDen;

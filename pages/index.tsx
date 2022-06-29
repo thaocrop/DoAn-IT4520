@@ -55,7 +55,7 @@ const Home: NextPageWithLayout = () => {
                                 Đất nước ta trải qua hàng nghìn năm dựng nước, giữ nước.
                             </p>
                             <p className="mt-4 text-lg leading-relaxed text-slate-500">
-                                Con người chân thành, mộc mạc chất phát. Những tháng ngày thống khổ
+                                Con người chân thành, mộc mạc chất phát. Những tháng ngày khó khăn
                                 của cha ông đã viết lên những trang sử hào hùng. Vẻ đẹp từ tâm hồn,
                                 từ con người ấy càng đẹp hơn khi chúng ta được tạo hóa ban tặng
                                 thiên nhiên hùng vĩ, đường bờ biển chạy dài dọc theo hình chữ S của
